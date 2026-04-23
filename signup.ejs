@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="signup-box">
+        <h2>Create Account</h2>
+
+        <form action="/login/signup" method="POST">
+
+            <% if(typeof errors !== "undefined" && errors && errors.length > 0){ %>
+                <div class="error-messages" >
+                    <% errors.forEach(function(error){ %>
+                        <p><%= error.msg %></p>
+                    <% }) %>
+                </div>
+            <% } %>
+
+            <div class="input-group">
+                <input type="text" name="firstName" placeholder="First Name" value="<%= typeof oldInput !== 'undefined' ? oldInput.firstName : '' %>" required>
+                <input type="text" name="lastName" placeholder="Last Name" value="<%= typeof oldInput !== 'undefined' ? oldInput.lastName : '' %>" required>
+            </div>
+
+            <input type="email" name="email" placeholder="Email Address" value="<%= typeof oldInput !== 'undefined' ? oldInput.email : '' %>" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <input type="password" name="confirmPassword"
+                   placeholder="Confirm Password" required>
+
+            <select name="userType" required>
+                <option value="">Select User Type</option>
+                <option value="guest" <%= typeof oldInput !== 'undefined' && oldInput.userType === 'guest' ? 'selected' : '' %>>Guest</option>
+                <option value="host" <%= typeof oldInput !== 'undefined' && oldInput.userType === 'host' ? 'selected' : '' %>>Host</option>
+            </select>
+
+            <div class="terms">
+                <input type="checkbox" name="terms" required>
+                <label>I agree to Terms & Conditions</label>
+            </div>
+
+            <button type="submit">Sign Up</button>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
