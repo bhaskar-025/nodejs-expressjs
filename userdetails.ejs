@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2> your are in home detailpage </h2>
+    <div class="container">
+        <div class="users-grid">
+            <% userfound.forEach(user =>{ %>
+                <div class="user-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="<%= user.username %>">
+                    </div>
+                    <div class="user-info">
+                        <h2 class="username"><%= user.username %></h2>
+                      <p class="gender">
+    <span class="label">mob_no:</span>
+    <span class="value"><%= user.mob_no %></span><br>
+
+    <span class="label">City:</span>
+    <span class="city"><%= user.city %></span><br>
+
+    <span class="label">Price:</span>
+    <span class="price"><%= user.price %> / night</span>
+</p>
+
+                    </div>
+                    <div class="buttons">
+                        <button class="btn-booking">booking</button>
+                        
+                    </div>
+                    <div class="buttons">
+                        <form action="/fav" method="POST">
+                            <button type="submit" class="btn-booking"  >Add to Favorites</button> 
+                            <input type="hidden" name="id" value="<%= user._id %>">  
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

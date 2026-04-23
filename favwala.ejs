@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/favwala.css">
+    <link rel="stylesheet" href="/output.css">
+    <title>User Profiles</title>
+</head>
+<body>
+    <div class="navbar">
+        <h1>User Profiles</h1>
+        <div class="nav-links">
+            <a href="/host" class="btn-nav">want to go  host </a>
+            <a href="/user" class="btn-nav">Users</a>
+        </div>
+    </div>
+       <h1>wlcome to booking toue home for rent </h1>
+    <div class="container">
+        <div class="users-grid">
+            <% if (favhomes.length === 0) { %>
+                <p>No favourites yet. Add some homes!</p>
+            <% } %>
+            <% favhomes.forEach(user =>{ %>
+                <div class="user-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWx8ZW58MHx8MHx8fDA%3D" alt="<%= user.username %>">
+                    </div>
+                    <div class="user-info">
+                        <h2 class="username"><%= user.username %></h2>
+                        <p class="gender">
+                             <span class="label">mob_no:</span>
+    <span class="value"><%= user.mob_no %></span><br>
+                        </p>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn-booking">booking</button>
+                        
+                    </div>
+                    <div class="buttons">
+                    <form action="/fav/delete/<%= user._id %>" method="post">
+                        <button type="submit" class="btn-booking">Remove from Favorites</button>
+                    </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
